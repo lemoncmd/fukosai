@@ -15,3 +15,12 @@ var _ua = (function(u){
       || u.indexOf("blackberry") != -1
   }
 })(window.navigator.userAgent.toLowerCase());
+
+window.addEventListener("load",load);
+
+function load(){
+	if(_ua.Mobile||_ua.Tablet){
+		var header=document.getElementById("header");
+		//todo:insert menu button
+	}
+}
