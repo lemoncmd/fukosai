@@ -53,5 +53,7 @@ function init(){
 	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
 	var i=new Image();
 	i.src="2970.png";
-	c.drawImage(i,-200,-200,400,400);
+	i.onload=function(){
+		c.drawImage(i,-200,-200,400,400);
+	}
 }
