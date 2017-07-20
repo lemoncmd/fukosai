@@ -15,6 +15,9 @@ var _ua = (function(u){
       || u.indexOf("blackberry") != -1
   }
 })(window.navigator.userAgent.toLowerCase());
+var c,ct;
+var w=window.outerWidth;
+var h=window.outerHeight;
 
 window.addEventListener("load",load);
 
@@ -23,4 +26,32 @@ function load(){
 		var header=document.getElementById("header");
 		//todo:insert menu button
 	}
+	init();
+}
+function init(){
+	context=document.getElementById('con');
+	context.setAttribute("width",document.body.clientWidth-10);
+	context.setAttribute("height",h);
+	c=context.getContext("2d");
+	c.beginPath();
+	c.fillStyle="rgb(184,134,11)";
+	c.fillRect(0,0,w,h);
+	var o=0;
+	var l=0;
+	if(w>350){
+		l=50;
+		c.font="50px 'Times New Roman'";
+		o=(w/2)-(50*3.5);
+	}else{
+		l=(50-((350-w)/7));
+		c.font=l+"px 'Times New Roman'";
+		o=(w/2)-(l*3.5);
+	}
+	c.fillStyle="rgb(0,0,0)";
+	c.fillText("スタンプラリー",o,h/2);
+	c.font="10px 'Times New Roman'";
+	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
+	var i=new Image();
+	i.src="2970.png";
+	c.drawImage(i,-200,-200,400,400);
 }
