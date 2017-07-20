@@ -30,11 +30,12 @@ function load(){
 	init();
 }
 function init(){
+	w=document.body.clientWidth-17;
 	context=document.getElementById('con');
 	context2=document.getElementById('con2');
-	context.setAttribute("width",document.body.clientWidth-10);
+	context.setAttribute("width",w);
 	context.setAttribute("height",h);
-	context2.setAttribute("width",document.body.clientWidth-10);
+	context2.setAttribute("width",w);
 	context2.setAttribute("height",h);
 	c=context.getContext("2d");
 	c2=context2.getContext("2d");
@@ -54,13 +55,12 @@ function init(){
 	}
 	c.fillStyle="rgb(0,0,0)";
 	c.fillText("スタンプラリー",o,h/2);
-	c.font="10px 'Times New Roman'";
-	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
+	c.font="20px 'Times New Roman'";
 	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
 	i=new Image();
 	i.src="2970.png";
 	i.onload=function(){
-		c2.translate(w-60,0);
+		c2.translate(w,0);
 		c.translate(0,0);
 		var p=setInterval("dww("+400+","+0+")",10);
 	}
@@ -73,7 +73,7 @@ function dww(k,o){
 	c.fillRect(-(k/2),-(k/2),k,k);
 	c.drawImage(i,-(k/2),-(k/2),k,k);
 	c2.fillRect(-250,-250,500,500);
- 	c2.drawImage(i,-250,-250,500,500);
+	c2.drawImage(i,-250,-250,500,500);
 	c.rotate(0.3*Math.PI/180);
 	c2.rotate(-1*Math.PI/180);
 }
