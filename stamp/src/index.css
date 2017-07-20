@@ -7,3 +7,6 @@ header{
 
 	background-color:#efdfbf;
 }
+html,body,canvas{
+	width: auto;
+}
