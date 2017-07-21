@@ -15,65 +15,59 @@ var _ua = (function(u){
       || u.indexOf("blackberry") != -1
   }
 })(window.navigator.userAgent.toLowerCase());
-var c,ct,c2;
+var context,context2;
 var w=window.outerWidth;
 var h=window.outerHeight;
-var i;
+var i,i2;
 
 window.addEventListener("load",load);
 
 function load(){
 	if(_ua.Mobile||_ua.Tablet){
 		var header=document.getElementById("header");
+		header.style.top="-100px";
 		//todo:insert menu button
 	}
 	init();
 }
 function init(){
 	w=document.body.clientWidth-17;
-	context=document.getElementById('con');
-	context2=document.getElementById('con2');
-	context.setAttribute("width",w);
-	context.setAttribute("height",h);
-	context2.setAttribute("width",w);
-	context2.setAttribute("height",h);
-	c=context.getContext("2d");
-	c2=context2.getContext("2d");
-	c.beginPath();
-	c.fillStyle="rgb(184,134,11)";
-	c.fillRect(0,0,w,h);
-	var o=0;
-	var l=0;
-	if(w>350){
-		l=50;
-		c.font="50px 'Times New Roman'";
-		o=(w/2)-(50*3.5);
-	}else{
-		l=(50-((350-w)/7));
-		c.font=l+"px 'Times New Roman'";
-		o=(w/2)-(l*3.5);
-	}
-	c.fillStyle="rgb(0,0,0)";
-	c.fillText("スタンプラリー",o,h/2);
-	c.font="20px 'Times New Roman'";
-	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
-	i=new Image();
-	i.src="2970.png";
-	i.onload=function(){
-		c2.translate(w,0);
-		c.translate(0,0);
-		var p=setInterval("dww("+400+","+0+")",10);
+	h=Math.max(document.documentElement.scrollHeight||document.body.scrollHeight,window.innerHeight)-17;
+	context=document.getElementById('con1');//context
+	context2=document.getElementById('con2');//rayout
+	var con=context.style;
+	var con2=context2.style;
+
+	con.width=con2.width=w+"px";
+	con.height=con2.height=h+"px";
+
+	var l=(w>350)?50:(50-((350-w)/7));
+	var o=(w/2)-(l*3.5);
+	con.font="normal "+l+"px 'Times New Roman'";
+
+//	c.fillStyle="rgb(0,0,0)";
+//	c.fillText("スタンプラリー",o,h/2);
+//	c.font="20px 'Times New Roman'";
+//	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
+
+	var gearR=200;
+
+	i=new Image(),i2=new Image();
+	i.src=i2.src="2970.png";
+	i.width=i.height=i2.width=i2.height=gearR*2;
+	i.className="gear gear1";
+	i2.className="gear gear2";
+	var is=i.style;
+	var is2=i2.style;
+
+	is.top=is2.top="-"+gearR+"px";
+	is.left="-"+gearR+"px";
+	is2.left=(w-gearR)+"px";
+	i2.onload=function(){
+		context2.appendChild(i);
+		context2.appendChild(i2);
 	}
 }
-function dww(k,o){
-	c.beginPath();
-	c2.beginPath();
-	c.fillStyle="rgb(184,134,11)";
-	c2.fillStyle="rgb(184,134,11)";
-	c.fillRect(-(k/2),-(k/2),k,k);
-	c.drawImage(i,-(k/2),-(k/2),k,k);
-	c2.fillRect(-250,-250,500,500);
-	c2.drawImage(i,-250,-250,500,500);
-	c.rotate(0.3*Math.PI/180);
-	c2.rotate(-1*Math.PI/180);
+function changeSize(){
+
 }
