@@ -31,15 +31,17 @@ function load(){
 	init();
 }
 function init(){
-	w=document.body.clientWidth-17;
+	w=document.body.clientWidth;
 	h=Math.max(document.documentElement.scrollHeight||document.body.scrollHeight,window.innerHeight)-17;
 	context=document.getElementById('con1');//context
 	context2=document.getElementById('con2');//rayout
+	
+	text=document.getElementById("text");
+	
 	var con=context.style;
 	var con2=context2.style;
 
-	con.width=con2.width=w+"px";
-	con.height=con2.height=h+"px";
+	document.body.style.height=h+"px";
 
 	var l=(w>350)?50:(50-((350-w)/7));
 	var o=(w/2)-(l*3.5);
@@ -52,22 +54,22 @@ function init(){
 
 	var gearR=200;
 
-	i=new Image(),i2=new Image();
-	i.src=i2.src="2970.png";
-	i.width=i.height=i2.width=i2.height=gearR*2;
-	i.className="gear gear1";
-	i2.className="gear gear2";
+	i=document.getElementById("pic");
+	i2=document.getElementById("pic2");
+	i.width=i.height=gearR*1.7;
+	i2.width=i2.height=gearR*2.2
+
 	var is=i.style;
 	var is2=i2.style;
 
-	is.top=is2.top="-"+gearR+"px";
-	is.left="-"+gearR+"px";
-	is2.left=(w-gearR)+"px";
-	i2.onload=function(){
-		context2.appendChild(i);
-		context2.appendChild(i2);
-	}
+	is.top="-"+(i.width/2)+"px";
+	is2.top="-"+(i2.width/2)+"px";
+	is.left="-"+(i.height/2)+"px";
+	is2.left=(w-(i2.height/2))+"px";
 }
 function changeSize(){
+
+}
+function changeSpeed(){
 
 }
