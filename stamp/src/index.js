@@ -77,8 +77,13 @@ function changeSpeed(){
 	//力尽きたので誰か書いて～
 }
 function start(){
-	
+	if(!localStorage.getItem("fukofes2017_str")){
+		if(!confirm("はじめにルール説明をお読みください。\n（まだ読まれていない方はキャンセルボタンを押してください）\n\nゲームを開始しますか？")){
+		return;
+		}
+		//ここにゲームスタート時の描画処理
+	}
 }
 function what(){
-	
+	localStorage.setItem("fukofes2017_str","Have a great time!")
 }
