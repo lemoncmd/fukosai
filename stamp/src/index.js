@@ -20,7 +20,10 @@ var w=window.outerWidth;
 var h=window.outerHeight;
 var i,i2;
 
+var gearR=200;
+
 window.addEventListener("load",load);
+window.addEventListener("resize",changeSize);
 
 function load(){
 	if(_ua.Mobile||_ua.Tablet){
@@ -31,13 +34,20 @@ function load(){
 	init();
 }
 function init(){
-	w=document.body.clientWidth;
-	h=Math.max(document.documentElement.scrollHeight||document.body.scrollHeight,window.innerHeight)-17;
 	context=document.getElementById('con1');//context
-	context2=document.getElementById('con2');//rayout
+	context2=document.getElementById('con2');//layout
 	
 	text=document.getElementById("text");
-	
+
+	i=document.getElementById("pic");
+	i2=document.getElementById("pic2");
+
+	changeSize();
+}
+function changeSize(){
+	w=document.body.clientWidth;
+	h=Math.max(document.documentElement.scrollHeight||document.body.scrollHeight,window.innerHeight)-17;
+
 	var con=context.style;
 	var con2=context2.style;
 
@@ -52,10 +62,6 @@ function init(){
 //	c.font="20px 'Times New Roman'";
 //	c.fillText('~With your smartphone you can know "FukoFes2017" that you do not know~',0/*(w/2)-(10*35)*/,h/2+l);
 
-	var gearR=200;
-
-	i=document.getElementById("pic");
-	i2=document.getElementById("pic2");
 	i.width=i.height=gearR*1.7;
 	i2.width=i2.height=gearR*2.2
 
@@ -66,9 +72,6 @@ function init(){
 	is2.top="-"+(i2.width/2)+"px";
 	is.left="-"+(i.height/2)+"px";
 	is2.left=(w-(i2.height/2))+"px";
-}
-function changeSize(){
-
 }
 function changeSpeed(){
 
