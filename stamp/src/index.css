@@ -38,34 +38,58 @@ html,body{
 	height:100%;
 	position:relative;
 	z-index:2;
+	text-align:center;
 }
 #text{
 	position:absolute;
 	width:100%;
-	height:100%;
-	top:70%;
+	top:27%;
 	left:0;
 	right:0;
 	bottom:0;
-	text-align:center;
 	margin:auto;
+}
+#text span{
+	white-space:nowrap;
+}
+#text span#title{
+	font-size:xx-large;
+}
+.button1{
+	position:relative;
+	display:inline-block;
+	font-weight:bold;
+	padding:2px 4px;
+	text-decoration:none;
+	background:#AA7D05;
+	transition:.4s;
+	width:40%;
+	height:10%;
+}
+#no1:hover{
+	background:red;
+	color:white;
+}
+#no2:hover{
+	background:green;
+	color:white;
 }
 .gear{
 	position:absolute;
 }
 .gear1{
-	-webkit-animation: spin 12s linear infinite;
-	-moz-animation: spin 12s linear infinite;
-	-ms-animation: spin 12s linear infinite;
-	-o-animation: spin 12s linear infinite;
-	animation: spin 12s linear infinite;
-}
-.gear2{
 	-webkit-animation: spin 3.6s linear infinite;
 	-moz-animation: spin 3.6s linear infinite;
 	-ms-animation: spin 3.6s linear infinite;
 	-o-animation: spin 3.6s linear infinite;
 	animation: spin 3.6s linear infinite;
+}
+.gear2{
+	-webkit-animation: spin 12s linear infinite;
+	-moz-animation: spin 12s linear infinite;
+	-ms-animation: spin 12s linear infinite;
+	-o-animation: spin 12s linear infinite;
+	animation: spin 12s linear infinite;
 	-webkit-animation-direction: reverse;
 	-moz-animation-direction: reverse;
 	-ms-animation-direction: reverse;
