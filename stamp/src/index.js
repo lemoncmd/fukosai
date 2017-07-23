@@ -27,9 +27,7 @@ window.addEventListener("resize",changeSize);
 
 function load(){
 	if(_ua.Mobile||_ua.Tablet){
-		var header=document.getElementById("header");
-		header.style.top="-100px";
-		//todo:insert menu button
+		//something
 	}
 	init();
 }
