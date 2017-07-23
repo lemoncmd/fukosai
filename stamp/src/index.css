@@ -34,14 +34,11 @@ html,body{
 #text{
 	position:absolute;
 	width:100%;
-	top:27%;
+	top:20%;
 	left:0;
 	right:0;
 	bottom:0;
 	margin:auto;
-}
-#text span{
-	white-space:nowrap;
 }
 #text span#title{
 	font-size:xx-large;
@@ -55,7 +52,8 @@ html,body{
 	background:#AA7D05;
 	transition:.4s;
 	width:40%;
-	height:10%;
+	height:20%;
+	font-size:x-large;
 }
 #no1:hover{
 	background:red;
@@ -73,6 +71,10 @@ html,body{
 	z-index:3;
 	display:none;
 }
+#ma{
+	width:100%;
+	height:3%;
+}
 #its{
 	z-index:4;
 	display:none;
@@ -86,6 +88,16 @@ html,body{
 	bottom:0;
 	margin:auto;
 	border:1px solid #000;
+}
+#its div{
+	position:relative;
+	width:90%;
+	text-align:left;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
 }
 .gear{
 	position:absolute;
