@@ -79,9 +79,18 @@ function start(){
 		if(!confirm("はじめにルール説明をお読みください。\n（まだ読まれていない方はキャンセルボタンを押してください）\n\nゲームを開始しますか？")){
 		return;
 		}
-		//ここにゲームスタート時の描画処理
 	}
+	localStorage.setItem("fukofes2017_str","Have a great time!");
+	document.getElementById("text").style.display="none";
+	document.getElementById("game").style.display="block";
+	//ここにゲームスタート時の描画処理
 }
 function what(){
-	localStorage.setItem("fukofes2017_str","Have a great time!")
+	localStorage.setItem("fukofes2017_str","Have a great time!");
+	document.getElementById("text").style.display="none";
+	document.getElementById("its").style.display="block";
+}
+function retop(){
+	document.getElementById("its").style.display="none";
+	document.getElementById("text").style.display="block";
 }

@@ -65,6 +65,28 @@ html,body{
 	background:green;
 	color:white;
 }
+#no3:hover{
+	background:blue;
+	color:white;
+}
+#game{
+	z-index:3;
+	display:none;
+}
+#its{
+	z-index:4;
+	display:none;
+	position:absolute;
+	background-color:#B8860B;
+	width:90%;
+	height:80%;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	border:1px solid #000;
+}
 .gear{
 	position:absolute;
 }
