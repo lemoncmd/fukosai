@@ -44,8 +44,8 @@ function init(){
 }
 function changeSize(){
 	w=document.body.clientWidth;
-	h=Math.min(document.documentElement.scrollHeight||document.body.scrollHeight,window.innerHeight)-17;
-
+	//h=Math.min(document.documentElement.scrollHeight||document.body.scrollHeight,window.innerHeight)-17;
+	h=window.innerHeight-17;
 	var con=context.style;
 	var con2=context2.style;
 
@@ -84,6 +84,7 @@ function start(){
 	document.getElementById("text").style.display="none";
 	document.getElementById("game").style.display="block";
 	//ここにゲームスタート時の描画処理
+	alert("まだ、できてないよ！");
 }
 function what(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
