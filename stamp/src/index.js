@@ -84,7 +84,6 @@ function start(){
 	document.getElementById("text").style.display="none";
 	document.getElementById("game").style.display="block";
 	//ここにゲームスタート時の描画処理
-	alert("まだ、できてないよ！");
 }
 function what(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
@@ -92,6 +91,7 @@ function what(){
 	document.getElementById("its").style.display="block";
 }
 function retop(){
+	document.getElementById("game").style.display="none";
 	document.getElementById("its").style.display="none";
 	document.getElementById("text").style.display="block";
 }
