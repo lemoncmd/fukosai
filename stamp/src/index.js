@@ -85,6 +85,28 @@ function start(){
 	document.getElementById("game").style.display="block";
 	//ここにゲームスタート時の描画処理
 }
+function open_file(){
+	document.getElementById('up').click();
+}
+function pickup(f){
+	if(f.length==0){
+		alert("QRコードを撮影してください");
+		return;
+	}else if(f.length!=1){
+		alert("複数ファイルを選択しないでください");
+		return;
+	}
+	var file=f[0];
+	if(!file.type.match(/image.*/)){
+		alert("これは画像として認識できません");
+		return;
+	}
+	qrcode.callback=function(res){
+		alert(res);
+		//現在、研究中...。
+	}
+	qrcode.decode(file);
+}
 function what(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
 	document.getElementById("text").style.display="none";
