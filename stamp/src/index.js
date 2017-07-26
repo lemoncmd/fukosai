@@ -19,6 +19,7 @@ var context,context2;
 var w=window.outerWidth;
 var h=window.outerHeight;
 var i,i2;
+var ymes;
 
 var gearR=200;
 
@@ -91,6 +92,12 @@ function start(){
 	//ここにゲームスタート時の描画処理
 }
 function open_file(){
+	ymes="・QRコード以外がなるべく入らないようにして撮影する\n";
+	ymes+="・QRコードを正面から15cm～20cm離れて撮影する\n";
+	ymes+="・QRコードにピントをあてる\n";
+	ymes+="QRコードが中央に位置するよう撮影する";
+	alert("カメラを起動してQRコードを撮影してください。");
+	alert("～～撮影のヒント～～\n\n"+ymes);
 	document.getElementById('up').click();
 }
 function pickup(f){
@@ -110,16 +117,14 @@ function pickup(f){
 	var lim=60;//画像の有効期限(秒)
 	if(Math.abs(time_lost.getTime()-Date.now())>lim*1000){
 		alert("撮影から"+(lim/60)+"分以上経過しています。\n再度撮影し直してください。");
+		//return;
 	}
 	var FR=new FileReader();
 	FR.readAsDataURL(file);
 	FR.onload=function(){
 		qrcode.callback=function(res){
 			if(res=="error decoding QR Code"){
-				var ymes="・QRコード以外がなるべく入らないようにして撮影する\n";
-				ymes+="・QRコードを正面から撮影する\n";
-				ymes+="・QRコードにピントをあてる\n";
-				alert("画像からQRコードを検出できませんでした。\n以下のことに注意してもう一度お試しください。\n\n"+ymes);
+				alert("画像からQRコードを検出できませんでした。\nもう一度お試しください。");
 			return;
 			}
 			alert(res);
