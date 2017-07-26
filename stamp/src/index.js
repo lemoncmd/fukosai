@@ -77,7 +77,12 @@ function changeSpeed(){
 function start(){
 	if(!localStorage.getItem("fukofes2017_str")){
 		if(!confirm("はじめにルール説明をお読みください。\n（まだ読まれていない方はキャンセルボタンを押してください）\n\nゲームを開始しますか？")){
-		return;
+			return;
+		}
+	}
+	if(!(window.File&&window.FileReader)){
+		if(!confirm("お使いのブラウザは参加条件を満たしていない可能性があります。\nゲーム画面へ進みますか？")){
+			return;
 		}
 	}
 	localStorage.setItem("fukofes2017_str","Have a great time!");
@@ -101,11 +106,26 @@ function pickup(f){
 		alert("これは画像として認識できません");
 		return;
 	}
-	qrcode.callback=function(res){
-		alert(res);
-		//現在、研究中...。
+	var time_lost=new Date(file.lastModified);
+	var lim=60;//画像の有効期限(秒)
+	if(Math.abs(time_lost.getTime()-Date.now())>lim*1000){
+		alert("撮影から"+(lim/60)+"分以上経過しています。\n再度撮影し直してください。");
 	}
-	qrcode.decode(file);
+	var FR=new FileReader();
+	FR.readAsDataURL(file);
+	FR.onload=function(){
+		qrcode.callback=function(res){
+			if(res=="error decoding QR Code"){
+				var ymes="・QRコード以外がなるべく入らないようにして撮影する\n";
+				ymes+="・QRコードを正面から撮影する\n";
+				ymes+="・QRコードにピントをあてる\n";
+				alert("画像からQRコードを検出できませんでした。\n以下のことに注意してもう一度お試しください。\n\n"+ymes);
+			return;
+			}
+			alert(res);
+		}
+		qrcode.decode(FR.result);
+	}
 }
 function what(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
