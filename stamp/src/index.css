@@ -57,7 +57,6 @@ html,body{
 }
 .button2{
 	position:relative;
-
 	display:inline-block;
 	font-weight:bold;
 	padding:2px 4px;
@@ -67,6 +66,23 @@ html,body{
 	width:90%;
 	height:20%;
 	font-size:large;
+}
+.button3{
+	position:relative;
+	display:inline-block;
+	font-weight:bold;
+	padding:2px 4px;
+	text-decoration:none;
+	background:#5E7D19;
+	transition:.4s;
+	width:90%;
+	height:90%;
+	font-size:large;
+	top:5%;
+	left:0;
+	right:0;
+	bottom:5%;
+	margin:auto;
 }
 #no1:hover{
 	background:red;
@@ -83,6 +99,10 @@ html,body{
 #no4:hover{
 	background:purple;
 	color:white;
+}
+#no5:hover{
+	background:#F1BA19;
+	color:black;
 }
 #game{
 	z-index:3;
@@ -161,8 +181,12 @@ html,body{
 	border-top:1px solid #000;
 }
 #up{
-	width:200%;
-	height:50%;
+	display:none;
+}
+#upload{
+	display:inline-block;
+	height:79%;
+	width:100%;
 }
 .sec{
 	width:100%;
