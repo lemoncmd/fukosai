@@ -53,7 +53,36 @@ html,body{
 	transition:.4s;
 	width:40%;
 	height:20%;
-	font-size:x-large;
+	font-size:large;
+}
+.button2{
+	position:relative;
+	display:inline-block;
+	font-weight:bold;
+	padding:2px 4px;
+	text-decoration:none;
+	background:#AA7D05;
+	transition:.4s;
+	width:90%;
+	height:20%;
+	font-size:large;
+}
+.button3{
+	position:relative;
+	display:inline-block;
+	font-weight:bold;
+	padding:2px 4px;
+	text-decoration:none;
+	background:#5E7D19;
+	transition:.4s;
+	width:90%;
+	height:90%;
+	font-size:large;
+	top:5%;
+	left:0;
+	right:0;
+	bottom:5%;
+	margin:auto;
 }
 #no1:hover{
 	background:red;
@@ -67,9 +96,28 @@ html,body{
 	background:blue;
 	color:white;
 }
+#no4:hover{
+	background:purple;
+	color:white;
+}
+#no5:hover{
+	background:#F1BA19;
+	color:black;
+}
 #game{
 	z-index:3;
 	display:none;
+	width:90%;
+	height:90%;
+	display:none;
+	position:absolute;
+	background-color:#B8860B;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	border:1px solid #000;
 }
 #ma{
 	width:100%;
@@ -98,6 +146,51 @@ html,body{
 	right:0;
 	bottom:0;
 	margin:auto;
+}
+.pa{
+	width:100%;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-ms-flex;
+	display:-o-flex;
+	display:flex;
+}
+#pa1,#pa3{
+	height:25%;
+}
+#pa2{
+	height:50%;
+}
+.one{
+	flex:1;
+	height:100%;
+	border:1px solid #000;
+}
+#pa2_1,#pa2_3{
+	flex:1;
+	border:1px solid #000;
+}
+#pa2_2{
+	flex:2;
+	border:1px solid #000;
+}
+#pa2_1_1,#pa2_3_1{
+	border-bottom:1px solid #000;
+}
+#pa2_1_2,#pa2_3_2{
+	border-top:1px solid #000;
+}
+#up{
+	display:none;
+}
+#upload{
+	display:inline-block;
+	height:79%;
+	width:100%;
+}
+.sec{
+	width:100%;
+	height:50%;
 }
 .gear{
 	position:absolute;
