@@ -6,7 +6,7 @@
 			スタンプラリー
 		</title>
 		<link rel="stylesheet" href="./src/index.css">
-		<script src="./src/index.js"></script>
+		<script type="text/javascript" src="./src/index.js"></script>
 		<script type="text/javascript" src="./src/qr/grid.js"></script>
 		<script type="text/javascript" src="./src/qr/version.js"></script>
 		<script type="text/javascript" src="./src/qr/detector.js"></script>
@@ -48,37 +48,41 @@
 					<button class="button1" id="no1" onclick="start()">ゲームスタート</button>
 					<div id="ma"></div>
 					<button class="button1" id="no2" onclick="what()">ルール説明</button>
+					<div id="like">
+						このサイトはMITライセンスの元運用しております。
+					</div>
 				</div>
 				<div id="game">
 				<!--flexibility.jsの利用推奨-->
 					<div id="pa1" class="pa">
-						<div id="pa1_1" class="one"></div>
-						<div id="pa1_2" class="one"></div>
-						<div id="pa1_3" class="one"></div>
-						<div id="pa1_4" class="one"></div>
+						<div id="pa1_1" class="one"><button onclick="path(1)" class="button4">No.1のヒントを見る</button></div>
+						<div id="pa1_2" class="one"><button onclick="path(2)" class="button4">No.2のヒントを見る</div>
+						<div id="pa1_3" class="one"><button onclick="path(3)" class="button4">No.3のヒントを見る</div>
+						<div id="pa1_4" class="one"><button onclick="path(4)" class="button4">No.4のヒントを見る</div>
 					</div>
 					<div id="pa2" class="pa">
 						<div id="pa2_1">
-							<div id="pa2_1_1" class="sec"></div>
-							<div id="pa2_1_2" class="sec"></div>
+							<div id="pa2_1_1" class="sec"><button onclick="path(5)" class="button4">No.5のヒントを見る</div>
+							<div id="pa2_1_2" class="sec"><button onclick="path(6)" class="button4">No.6のヒントを見る</div>
 						</div>
 						<div id="pa2_2">
 							<div id="upload">
 								<button onclick="open_file()" class="button3" id="no5">QRコードを撮影</button>
 								<input type="file" id="up" onchange="pickup(this.files)">
+								<button class="button2" id="no4" onclick="retop()">トップに戻る</button>
 							</div>
-							<button class="button2" id="no4" onclick="retop()">トップに戻る</button>
+							<div id="hint"></div>
 						</div>
 						<div id="pa2_3">
-							<div id="pa2_3_1" class="sec"></div>
-							<div id="pa2_3_2" class="sec"></div>
+							<div id="pa2_3_1" class="sec"><button onclick="path(7)" class="button4">No.7のヒントを見る</div>
+							<div id="pa2_3_2" class="sec"><button onclick="path(8)" class="button4">No.8のヒントを見る</div>
 						</div>
 					</div>
 					<div id="pa3" class="pa">
-						<div id="pa3_1" class="one"></div>
-						<div id="pa3_2" class="one"></div>
-						<div id="pa3_3" class="one"></div>
-						<div id="pa3_4" class="one"></div>
+						<div id="pa3_1" class="one"><button onclick="path(9)" class="button4">No.9のヒントを見る</div>
+						<div id="pa3_2" class="one"><button onclick="path(10)" class="button4">No.10のヒントを見る</div>
+						<div id="pa3_3" class="one"><button onclick="path(11)" class="button4">No.11のヒントを見る</div>
+						<div id="pa3_4" class="one"><button onclick="path(12)" class="button4">No.12のヒントを見る</div>
 					</div>
 				</div>
 				<div id="its">
@@ -93,7 +97,6 @@
 					　をプレゼントいたします。<br>
 					⑤プレゼントの交換および抽選は、1階会議室にて行っております。<br><br><br>
 					※スタンプラリーのQRコード等は未プレイ者にネタバレ等無きようお願いします。<br>
-					※このサイトはMITライセンスの元運用しております。<br>
 					※参加費は無料ですが、通信料は参加者の方にご負担ただいております。
 					<br><br><br>
 					</div>

@@ -65,6 +65,7 @@ html,body{
 	transition:.4s;
 	width:90%;
 	height:20%;
+	top:7%;
 	font-size:large;
 }
 .button3{
@@ -76,13 +77,35 @@ html,body{
 	background:#5E7D19;
 	transition:.4s;
 	width:90%;
-	height:90%;
+	height:70%;
 	font-size:large;
 	top:5%;
 	left:0;
 	right:0;
 	bottom:5%;
 	margin:auto;
+}
+.button4{
+	position:relative;
+	display:inline-block;
+	font-weight:bold;
+	padding:2px 4px;
+	text-decoration:none;
+	background:#00898B;
+	transition:.4s;
+	width:80%;
+	height:80%;
+	font-size:large;
+	top:5%;
+	left:0;
+	right:0;
+	bottom:5%;
+	margin:auto;
+}
+.button4:hover{
+	color:white;
+	width:90%;
+	height:90%;
 }
 #no1:hover{
 	background:red;
@@ -185,12 +208,15 @@ html,body{
 }
 #upload{
 	display:inline-block;
-	height:79%;
+	height:100%;
 	width:100%;
 }
 .sec{
 	width:100%;
 	height:50%;
+}
+#hint{
+	display:none;
 }
 .gear{
 	position:absolute;

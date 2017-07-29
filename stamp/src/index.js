@@ -15,6 +15,19 @@ var _ua = (function(u){
       || u.indexOf("blackberry") != -1
   }
 })(window.navigator.userAgent.toLowerCase());
+var hnt=["1年生の廊下",
+		"2年B組前の廊下",
+		"3年C組前",
+		"地学室の近く",
+		"金券販売所前",
+		"体育館の吹き抜け",
+		"グリーンコート",
+		"化学部の模擬店",
+		"特別室の近く",
+		"Neo Kosho Free Wifiの発信元",
+		"3年B組共田くんの財布の中",
+		"地球上のどこか"];
+
 var context,context2;
 var w=window.outerWidth;
 var h=window.outerHeight;
@@ -89,16 +102,27 @@ function start(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
 	document.getElementById("text").style.display="none";
 	document.getElementById("game").style.display="block";
-	//ここにゲームスタート時の描画処理
 }
 function open_file(){
 	ymes="・QRコード以外がなるべく入らないようにして撮影する\n";
 	ymes+="・QRコードを正面から15cm～20cm離れて撮影する\n";
 	ymes+="・QRコードにピントをあてる\n";
-	ymes+="QRコードが中央に位置するよう撮影する";
+	ymes+="・QRコードが中央に位置するよう撮影する";
 	alert("カメラを起動してQRコードを撮影してください。");
 	alert("～～撮影のヒント～～\n\n"+ymes);
 	document.getElementById('up').click();
+}
+function path(number){
+	document.getElementById("upload").style.display="none";
+	document.getElementById("hint").style.display="block";
+	hint.innerHTML="<h3>～ヒント～</h3>"+hnt[number-1]+"を探してみよう<br><br><button class='button5' onclick='close()'>ヒントを閉じる</button>";
+//	var co=document.createElement("button");
+//	co.onclick="close()";
+//	document.getElementById("hint").appendChild(co);
+}
+function close(){
+	document.getElementById("hint").style.display="none";
+	document.getElementById("upload").style.display="block";
 }
 function pickup(f){
 	if(f.length==0){
