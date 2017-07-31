@@ -61,11 +61,8 @@ html,body{
 	font-weight:bold;
 	padding:2px 4px;
 	text-decoration:none;
-	background:#AA7D05;
 	transition:.4s;
 	width:90%;
-	height:20%;
-	top:7%;
 	font-size:large;
 }
 .button3{
@@ -77,12 +74,9 @@ html,body{
 	background:#5E7D19;
 	transition:.4s;
 	width:90%;
-	height:70%;
-	font-size:large;
+	height:65%;
 	top:5%;
-	left:0;
-	right:0;
-	bottom:5%;
+	font-size:large;
 	margin:auto;
 }
 .button4{
@@ -96,10 +90,10 @@ html,body{
 	width:80%;
 	height:80%;
 	font-size:large;
-	top:5%;
+	top:0;
 	left:0;
 	right:0;
-	bottom:5%;
+	bottom:0;
 	margin:auto;
 }
 .button4:hover{
@@ -119,6 +113,14 @@ html,body{
 	background:blue;
 	color:white;
 }
+#no4{
+	top:10%;
+	left:0;
+	right:0;
+	bottom:5%;
+	background:#AA7D05;
+	height:20%;
+}
 #no4:hover{
 	background:purple;
 	color:white;
@@ -126,6 +128,14 @@ html,body{
 #no5:hover{
 	background:#F1BA19;
 	color:black;
+}
+#clo_button{
+	bottom:0;
+	background:white;
+	height:40%;
+}
+#clo_button:hover{
+	background:yellow;
 }
 #game{
 	z-index:3;
@@ -170,6 +180,26 @@ html,body{
 	bottom:0;
 	margin:auto;
 }
+.iop{
+	width:100%;
+	height:100%;
+	display:relative;
+}
+.one h2{
+	top:45%;
+	bottom:0;
+	margin:auto;
+}
+.iop2{
+	width:100%;
+	height:50%;
+	display:relative;
+}
+.ioq{
+	position:absolute;
+	display:none;
+	width:100%;
+}
 .pa{
 	width:100%;
 	display:-webkit-flex;
@@ -186,8 +216,16 @@ html,body{
 }
 .one{
 	flex:1;
+	display:flex;
 	height:100%;
+	align-items:center;
+	justify-items:center;
 	border:1px solid #000;
+}
+.one h{
+	left:0;
+	right:0;
+	margin:auto;
 }
 #pa2_1,#pa2_3{
 	flex:1;
@@ -198,10 +236,10 @@ html,body{
 	border:1px solid #000;
 }
 #pa2_1_1,#pa2_3_1{
-	border-bottom:1px solid #000;
+	border-bottom:2px solid #000;
 }
 #pa2_1_2,#pa2_3_2{
-	border-top:1px solid #000;
+	border-top:2px solid #000;
 }
 #up{
 	display:none;
@@ -211,12 +249,42 @@ html,body{
 	height:100%;
 	width:100%;
 }
-.sec{
+#mit{
+	color:white;
+	font-weight:bold;
+	font-size:small;
+}
+#foot{
+	position:fixed;
+	bottom:0;
+	z-index:99;
 	width:100%;
-	height:50%;
+	text-align:right;
+	background:black;
+}
+#foot span{
+	color:white;
+}
+#foot span#copyright{
+	font-size:10px;
+}
+#foot span#str_name{
+	font-size:7px;
+}
+.sec{
+	height:100%;
+	display:flex;
+	align-items:center;
+	justify-items:center;
+}
+.sec h2{
+	left:0;
+	right:0;
+	margin:auto;
 }
 #hint{
 	display:none;
+	height:100%;
 }
 .gear{
 	position:absolute;
@@ -261,3 +329,11 @@ html,body{
 	0% {transform: rotate(0deg);}
 	100% {transform: rotate(360deg);}
 }
+
+/*
+実は密かに
+	display:flex;
+	align-items:center;
+	justify-items:center;
+へ切り替えたいと思っている。
+*/
