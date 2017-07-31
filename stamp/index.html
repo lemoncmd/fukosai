@@ -47,23 +47,21 @@
 					<div id="ma"></div>
 					<button class="button1" id="no1" onclick="start()">ゲームスタート</button>
 					<div id="ma"></div>
-					<button class="button1" id="no2" onclick="what()">ルール説明</button>
-					<div id="like">
-						このサイトはMITライセンスの元運用しております。
-					</div>
+					<button class="button1" id="no2" onclick="what()">ルール説明</button><br><br>
+					<span id="mit">このサイトはMITライセンスの元運用しております。</span><br>
 				</div>
 				<div id="game">
 				<!--flexibility.jsの利用推奨-->
 					<div id="pa1" class="pa">
-						<div id="pa1_1" class="one"><button onclick="path(1)" class="button4">No.1のヒントを見る</button></div>
-						<div id="pa1_2" class="one"><button onclick="path(2)" class="button4">No.2のヒントを見る</div>
-						<div id="pa1_3" class="one"><button onclick="path(3)" class="button4">No.3のヒントを見る</div>
-						<div id="pa1_4" class="one"><button onclick="path(4)" class="button4">No.4のヒントを見る</div>
+						<div class="iop"><div id="pa1_1" class="one"><button onclick="path(1)" class="button4">No.1のヒントを見る</button></div><div id="i1" class="ioq">済</div></div>
+						<div class="iop"><div id="pa1_2" class="one"><button onclick="path(2)" class="button4">No.2のヒントを見る</button></div><div id="i2" class="ioq">済</div></div>
+						<div class="iop"><div id="pa1_3" class="one"><button onclick="path(3)" class="button4">No.3のヒントを見る</button></div><div id="i3" class="ioq">済</div></div>
+						<div class="iop"><div id="pa1_4" class="one"><button onclick="path(4)" class="button4">No.4のヒントを見る</button></div><div id="i4" class="ioq">済</div></div>
 					</div>
 					<div id="pa2" class="pa">
 						<div id="pa2_1">
-							<div id="pa2_1_1" class="sec"><button onclick="path(5)" class="button4">No.5のヒントを見る</div>
-							<div id="pa2_1_2" class="sec"><button onclick="path(6)" class="button4">No.6のヒントを見る</div>
+							<div class="iop2"><div id="pa2_1_1" class="sec"><button onclick="path(5)" class="button4">No.5のヒントを見る</button></div><div id="i5" class="ioq">済</div></div>
+							<div class="iop2"><div id="pa2_1_2" class="sec"><button onclick="path(7)" class="button4">No.7のヒントを見る</button></div><div id="i7" class="ioq">済</div></div>
 						</div>
 						<div id="pa2_2">
 							<div id="upload">
@@ -71,18 +69,21 @@
 								<input type="file" id="up" onchange="pickup(this.files)">
 								<button class="button2" id="no4" onclick="retop()">トップに戻る</button>
 							</div>
-							<div id="hint"></div>
+							<div id="hint">
+								<div id="cent_hint"></div>
+								<button id="clo_button" class='button2' onclick='hint_close()'>ヒントを閉じる</button>
+							</div>
 						</div>
 						<div id="pa2_3">
-							<div id="pa2_3_1" class="sec"><button onclick="path(7)" class="button4">No.7のヒントを見る</div>
-							<div id="pa2_3_2" class="sec"><button onclick="path(8)" class="button4">No.8のヒントを見る</div>
+							<div class="iop2"><div id="pa2_3_1" class="sec"><button onclick="path(6)" class="button4">No.6のヒントを見る</button></div><div id="i6" class="ioq">済</div></div>
+							<div class="iop2"><div id="pa2_3_2" class="sec"><button onclick="path(8)" class="button4">No.8のヒントを見る</button></div><div id="i8" class="ioq">済</div></div>
 						</div>
 					</div>
 					<div id="pa3" class="pa">
-						<div id="pa3_1" class="one"><button onclick="path(9)" class="button4">No.9のヒントを見る</div>
-						<div id="pa3_2" class="one"><button onclick="path(10)" class="button4">No.10のヒントを見る</div>
-						<div id="pa3_3" class="one"><button onclick="path(11)" class="button4">No.11のヒントを見る</div>
-						<div id="pa3_4" class="one"><button onclick="path(12)" class="button4">No.12のヒントを見る</div>
+						<div class="iop"><div id="pa3_1" class="one"><button onclick="path(9)" class="button4">No.9のヒントを見る</button></div><div id="i9" class="ioq">済</div></div>
+						<div class="iop"><div id="pa3_2" class="one"><button onclick="path(10)" class="button4">No.10のヒントを見る</button></div><div id="i10" class="ioq">済</div></div>
+						<div class="iop"><div id="pa3_3" class="one"><button onclick="path(11)" class="button4">No.11のヒントを見る</button></div><div id="i11" class="ioq">済</div></div>
+						<div class="iop"><div id="pa3_4" class="one"><button onclick="path(12)" class="button4">No.12のヒントを見る</button></div><div id="i12" class="ioq">済</div></div>
 					</div>
 				</div>
 				<div id="its">
@@ -96,12 +97,20 @@
 					　　・10箇所全て回った→参加賞＆景品抽選券<br>
 					　をプレゼントいたします。<br>
 					⑤プレゼントの交換および抽選は、1階会議室にて行っております。<br><br><br>
+					※カメラ搭載のインターネット接続の出来る携帯端末をお持ちの方が対象です。<br>
+					　端末をお持ちでない方は、別途対応いたしますのではじめに1階会議室へお越しください。<br>
 					※スタンプラリーのQRコード等は未プレイ者にネタバレ等無きようお願いします。<br>
 					※参加費は無料ですが、通信料は参加者の方にご負担ただいております。
 					<br><br><br>
 					</div>
 					<button class="button1" id="no3" onclick="retop()">ルール説明を閉じる</button>
 				</div>
+			</div>
+			<div id="foot">
+				<span id="copyright">Copyright 2017 STR有志</span>
+				<span id="str_name">
+					Akira.I , Hiroshi.I , Naoki.M , Takeru.O , Reo.T , Daiki.K , Daichi.O , Kaisei.H (Special Thanks Kazumi.I)　　
+				</span>
 			</div>
 		</div>
 	</body>
