@@ -80,7 +80,7 @@ function changeSize(){
 	var is=i.style;
 	var is2=i2.style;
 
-	is.top=(h-(i.width/2))+"px";
+	is.top=(h-(i.width/2))-7+"px";
 	is2.top="-"+(i2.width/2)+"px";
 	is.left="-"+(i.height/2)+"px";
 	is2.left=(w-(i2.height/2))+"px";
@@ -95,9 +95,8 @@ function start(){
 		}
 	}
 	if(!(window.File&&window.FileReader)){
-		if(!confirm("お使いのブラウザは参加条件を満たしていない可能性があります。\nゲーム画面へ進みますか？")){
-			return;
-		}
+		alert("お使いのブラウザは参加条件を満たしていません。\n別の端末での参加を心よりお待ちしております。");
+		return;
 	}
 	localStorage.setItem("fukofes2017_str","Have a great time!");
 	document.getElementById("text").style.display="none";
@@ -115,12 +114,9 @@ function open_file(){
 function path(number){
 	document.getElementById("upload").style.display="none";
 	document.getElementById("hint").style.display="block";
-	hint.innerHTML="<h3>～ヒント～</h3>"+hnt[number-1]+"を探してみよう<br><br><button class='button5' onclick='close()'>ヒントを閉じる</button>";
-//	var co=document.createElement("button");
-//	co.onclick="close()";
-//	document.getElementById("hint").appendChild(co);
+	cent_hint.innerHTML="<h3>～ヒントNo"+number+"～</h3>"+hnt[number-1]+"を探してみよう<br><br>";
 }
-function close(){
+function hint_close(){
 	document.getElementById("hint").style.display="none";
 	document.getElementById("upload").style.display="block";
 }
@@ -151,10 +147,47 @@ function pickup(f){
 				alert("画像からQRコードを検出できませんでした。\nもう一度お試しください。");
 			return;
 			}
-			alert(res);
+			alert(res);//debug用
+			tophp(res);
 		}
 		qrcode.decode(FR.result);
 	}
+}
+function tophp(res){
+	var q=new XMLHttpRequest();
+	q.onreadystatechange=function(){
+		if(q.readyState==4&&q.status==200){
+			if(q.responseText.search("non")==0){
+				alert("このQRコードはチェックポイントではありません");
+			}else{
+				var vg=q.responseText.split("@");
+				vg[0]=vg[0]-0;
+				if(!isNaN(vg[0])){
+					var ched="<div>";
+					switch(vg[0]){
+						case 1:case 2:case 3:case 4:
+						document.getElementById("pa1_"+vg[0]).innerHTML="<h2>"+vg[1]+"</h2>";
+						document.getElementById("i"+vg[0]).style="block";
+						break;
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+						case 9:case 10:case 11:case 12:
+						document.getElementById("pa3_"+vg[0]).innerHTML="<h2>"+vg[1]+"</h2>";
+						default:
+						alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:switch_responseText is default)");
+					}
+				}else{
+					alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:responseText is NaN)");
+				}
+			}
+		}
+	}
+	q.open("POST","check.php",true);
+	q.setRequestHeader("Content-Type","x-www-form-urlencoded");
+	q.setRequestHeader("id","00001");
+	q.send(res);
 }
 function what(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
