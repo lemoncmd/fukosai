@@ -147,7 +147,7 @@ function pickup(f){
 				alert("画像からQRコードを検出できませんでした。\nもう一度お試しください。");
 			return;
 			}
-			alert(res);//debug用
+			//alert(res);//debug用
 			tophp(res);
 		}
 		qrcode.decode(FR.result);
@@ -164,17 +164,16 @@ function tophp(res){
 				vg[0]=vg[0]-0;
 				if(!isNaN(vg[0])){
 					var ched="<div>";
+					document.getElementById("i"+vg[0]).style.display="block";
 					switch(vg[0]){
 						case 1:case 2:case 3:case 4:
-						document.getElementById("pa1_"+vg[0]).innerHTML="<h2>"+vg[1]+"</h2>";
-						document.getElementById("i"+vg[0]).style="block";
-						break;
-						case 5:
-						case 6:
-						case 7:
-						case 8:
+						document.getElementById("pa1_"+vg[0]).innerHTML="<h2>"+vg[1]+"</h2>";break;
+						case 5:document.getElementById("pa2_1_1").innerHTML="<h2>"+vg[1]+"</h2>";break;
+						case 6:document.getElementById("pa2_3_1").innerHTML="<h2>"+vg[1]+"</h2>";break;
+						case 7:document.getElementById("pa2_1_2").innerHTML="<h2>"+vg[1]+"</h2>";break;
+						case 8:document.getElementById("pa2_3_2").innerHTML="<h2>"+vg[1]+"</h2>";break;
 						case 9:case 10:case 11:case 12:
-						document.getElementById("pa3_"+vg[0]).innerHTML="<h2>"+vg[1]+"</h2>";
+						document.getElementById("pa3_"+(vg[0]-8)).innerHTML="<h2>"+vg[1]+"</h2>";break;
 						default:
 						alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:switch_responseText is default)");
 					}
@@ -184,7 +183,7 @@ function tophp(res){
 			}
 		}
 	}
-	q.open("POST","check.php",true);
+	q.open("POST","./src/check.php",true);
 	q.setRequestHeader("Content-Type","x-www-form-urlencoded");
 	q.setRequestHeader("id","00001");
 	q.send(res);
