@@ -33,8 +33,21 @@ var w=window.outerWidth;
 var h=window.outerHeight;
 var i,i2;
 var ymes;
-
+var check=true;
+var counter=0;
 var gearR=200;
+var clea=[];
+if(!localStorage){
+	alert("お使いの端末では、ゲームが正常に動作しない場合があります。");
+}
+if(location.hash=="#reset"){
+	localStorage.setItem("fukofes2017_str","hogehoge");
+	localStorage.removeItem("fukofes2017_str");
+	localStorage.setItem("fukofes2017_str_id","hogehoge");
+	localStorage.removeItem("fukofes2017_str_id");
+	localStorage.setItem("fukofes2017_str_clea","hogehoge");
+	localStorage.removeItem("fukofes2017_str_clea");
+}
 
 window.addEventListener("load",load);
 window.addEventListener("resize",changeSize);
@@ -55,6 +68,17 @@ function init(){
 	i2=document.getElementById("pic2");
 
 	changeSize();
+	if(!localStorage.getItem("fukofes2017_str_id")){
+		localStorage.setItem("fukofes2017_str_id","0000");
+		tophp("",1);
+	}
+	if(localStorage.getItem("fukofes2017_str_clea")){
+		clea=localStorage.getItem("fukofes2017_str_clea").split(",");
+		counter=clea.length;
+		for(p=0;p<clea.length;p++){
+			tophp(clea[p],4);
+		}
+	}
 }
 function changeSize(){
 	w=document.body.clientWidth;
@@ -101,6 +125,13 @@ function start(){
 	localStorage.setItem("fukofes2017_str","Have a great time!");
 	document.getElementById("text").style.display="none";
 	document.getElementById("game").style.display="block";
+	if(check){
+		check=false;
+		tophp("",2);
+	}
+	if(counter>=11){
+		alert("1階事務室にある最後のQRコードを読み取ってください");
+	}
 }
 function open_file(){
 	ymes="・QRコード以外がなるべく入らないようにして撮影する\n";
@@ -145,47 +176,106 @@ function pickup(f){
 		qrcode.callback=function(res){
 			if(res=="error decoding QR Code"){
 				alert("画像からQRコードを検出できませんでした。\nもう一度お試しください。");
-			return;
+			}else if(res.search("goal")==0){
+				if(counter>=4){
+					if(counter>=12){
+						tophp(res,3);
+					}else if(confirm("一度ゴールすると続きから再開できません。\nゴールしますか？")){
+						tophp(res,3);
+					}
+				}else{
+					alert("4箇所以上チェックポイントを回ってからゴールしてください");
+				}
+			}else{
+				console.log(res);//debug用
+				tophp(res,0);
 			}
-			//alert(res);//debug用
-			tophp(res);
 		}
 		qrcode.decode(FR.result);
 	}
 }
-function tophp(res){
+function tophp(res,hack){
 	var q=new XMLHttpRequest();
 	q.onreadystatechange=function(){
 		if(q.readyState==4&&q.status==200){
-			if(q.responseText.search("non")==0){
-				alert("このQRコードはチェックポイントではありません");
-			}else{
-				var vg=q.responseText.split("@");
-				vg[0]=vg[0]-0;
-				if(!isNaN(vg[0])){
-					var ched="<div>";
-					document.getElementById("i"+vg[0]).style.display="block";
-					switch(vg[0]){
-						case 1:case 2:case 3:case 4:
-						document.getElementById("pa1_"+vg[0]).innerHTML="<h2>"+vg[1]+"</h2>";break;
-						case 5:document.getElementById("pa2_1_1").innerHTML="<h2>"+vg[1]+"</h2>";break;
-						case 6:document.getElementById("pa2_3_1").innerHTML="<h2>"+vg[1]+"</h2>";break;
-						case 7:document.getElementById("pa2_1_2").innerHTML="<h2>"+vg[1]+"</h2>";break;
-						case 8:document.getElementById("pa2_3_2").innerHTML="<h2>"+vg[1]+"</h2>";break;
-						case 9:case 10:case 11:case 12:
-						document.getElementById("pa3_"+(vg[0]-8)).innerHTML="<h2>"+vg[1]+"</h2>";break;
-						default:
-						alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:switch_responseText is default)");
+			switch(hack){
+			case 4:
+			case 0:
+				if(q.responseText.search("non")==0){
+					if(hack==0){
+						alert("このQRコードはチェックポイントではありません");
 					}
 				}else{
-					alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:responseText is NaN)");
+					var vg=q.responseText.split("@");
+					vg[0]=vg[0]-0;
+					if(!isNaN(vg[0])){
+						var ched="<div>";
+						document.getElementById("i"+vg[0]).style.display="block";
+						var yok;
+						switch(vg[0]){
+							case 1:case 2:case 3:case 4:
+							yok=document.getElementById("pa1_"+vg[0]);break;
+							case 5:yok=document.getElementById("pa2_1_1");break;
+							case 6:yok=document.getElementById("pa2_3_1");break;
+							case 7:yok=document.getElementById("pa2_1_2");break;
+							case 8:yok=document.getElementById("pa2_3_2");break;
+							case 9:case 10:case 11:case 12:
+							yok=document.getElementById("pa3_"+(vg[0]-8));break;
+							default:
+							alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:switch_responseText is default)");
+							return;
+						}
+						samos=yok.children;
+						if(samos[0].innerHTML.search(vg[1])!=0){
+							counter++;
+							yok.innerHTML="<h2>"+vg[1]+"</h2>";
+							clea.push(res);
+							localStorage.setItem("fukofes2017_str_clea",clea.join(","));
+						}else{
+							if(hack==0){
+								alert("このチェックポイントは通過済です。\nほかのチェックポイントを探してください。");
+							}
+						}
+						if(hack==0){
+							if(counter==4){
+								alert("～ルール確認～\n\n・4箇所以上回った→参加賞\n・12箇所全て回った→参加賞＆景品抽選券\nを1階事務室にてお配りしています。");
+								alert("現在4箇所のチェックポイントを通過しました。\nゲームを終了する場合は、1階事務室のQRコードを読み取り、参加賞をお受け取りください");
+							}else if(counter>=11){
+								alert("1階事務室にある最後のQRコードを読み取ってください");
+							}
+						}
+					}else{
+						if(hack==0){
+							alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:responseText is NaN)");
+						}else{
+							alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:responseText is NaN case 4)");
+						}
+					}
 				}
+			break;
+			case 1:
+				localStorage.setItem("fukofes2017_str_id",q.responseText);
+			break;
+			case 2:break;
+			case 3:
+				if(q.responseText=="ok11"){
+					document.getElementById("upload").style.display="none";
+					document.getElementById("goal").style.display="block";
+				}else if(q.responseText=="ok4"){
+					document.getElementById("upload").style.display="none";
+					document.getElementById("onegoal").style.display="block";
+				}else{
+					alert("4箇所以上チェックポイントを回ってからゴールしてください");
+				}
+			break;
+			default:alert("技術的な問題が発生しました。\nこの画面をスタンプラリースタッフまでご提示ください。\n\n(ERROR:res is non)");
 			}
 		}
 	}
 	q.open("POST","./src/check.php",true);
 	q.setRequestHeader("Content-Type","x-www-form-urlencoded");
-	q.setRequestHeader("id","00001");
+	q.setRequestHeader("id",localStorage.getItem("fukofes2017_str_id"));
+	q.setRequestHeader("tag",hack);
 	q.send(res);
 }
 function what(){
