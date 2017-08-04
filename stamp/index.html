@@ -25,7 +25,7 @@
 		<script type="text/javascript" src="./src/qr/alignpat.js"></script>
 		<script type="text/javascript" src="./src/qr/databr.js"></script>
 	</head>
-	<body>
+	<body ontouchstart="">
 		<div id="content">
 			<div id="con1">
 				<img src="./2970.png" id="pic" class="gear gear1">
@@ -115,6 +115,24 @@
 								<div id="cent_hint"></div>
 								<button id="clo_button" class='button2' onclick='hint_close()'>ヒントを閉じる</button>
 							</div>
+							<div id="goal">
+								<div id="oneresistance">
+									<h2>完全クリア！！</h2>
+									おめでとうございます。全てのチェックポイントを通過しました。<br>
+									係の者にこの画面をご提示の上、参加賞と景品の抽選(1回)をお受け取りください！<br><br>
+									ご参加ありがとうございました。引き続き附高祭2017をお楽しみください。
+								</div>
+								<button class="button2" id="no4" onclick="retop()">トップに戻る</button>
+							</div>
+							<div id="onegoal">
+								<div id="enlightened">
+									<h2>クリア！！</h2>
+									おめでとうございます。<p id="check_cou">0</p>箇所のチェックポイントを通過しました。<br>
+									係りの者にこの画面をご提示の上、参加賞をお受け取りください！<br><br>
+									ご参加ありがとうございました。引き続き附高祭2017をお楽しみください。
+								</div>
+								<button class="button2" id="no4" onclick="retop()">トップに戻る</button>
+							</div>
 						</div>
 						<div id="pa2_3">
 							<div class="iop2">
@@ -177,15 +195,18 @@
 					②附高祭2017を巡っている間に「デジタルスタンプラリーチェックポイント」と書かれた紙を見かけたら、撮影ボタンを押します。<br>
 					③チェックポイントに印刷されているQRコードを読み取ります。<br>
 					④チェックポイントを回った数によって<br>
-					　　・5箇所以上回った→参加賞<br>
-					　　・10箇所全て回った→参加賞＆景品抽選券<br>
+					　　・4箇所以上回った→参加賞<br>
+					　　・12箇所全て回った→参加賞＆景品抽選券<br>
 					　をプレゼントいたします。<br>
-					⑤プレゼントの交換および抽選は、1階会議室にて行っております。<br><br><br>
+					⑤プレゼントの交換および抽選は、1階会議室にて行っております。<br><br>
+					<p id="kome">
 					※カメラ搭載のインターネット接続の出来る携帯端末をお持ちの方が対象です。<br>
 					　端末をお持ちでない方は、別途対応いたしますのではじめに1階会議室へお越しください。<br>
+					※参加は1人につき1回のみです。ただし、グループでの参加も歓迎いたします。<br>
 					※スタンプラリーのQRコード等は未プレイ者にネタバレ等無きようお願いします。<br>
-					※参加費は無料ですが、通信料は参加者の方にご負担ただいております。
-					<br><br><br>
+					※参加費は無料ですが、通信料は参加者の方にご負担ただいております。<br>
+					※本ゲームは個人を特定できない範囲で情報を収集し、今後の附高祭の品質向上のために使用されます。<br>
+					</p>
 					</div>
 					<button class="button1" id="no3" onclick="retop()">ルール説明を閉じる</button>
 				</div>
