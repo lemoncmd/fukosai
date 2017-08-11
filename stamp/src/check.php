@@ -1,10 +1,27 @@
 <?php
 function send(){
-	echo "<html><head><meta http-equiv='Content-Type' content='text/html;charset=utf8'><meta http-equiv='refresh' content='0;index.html'></head></html>";
+	echo "<html><head><meta http-equiv='Content-Type' content='text/html;charset=utf8'><meta http-equiv='refresh' content='0;../index.html'></head></html>";
 	exit();
 }
+$t="";
 if($_SERVER["REQUEST_METHOD"]!="POST"){
 	send();
+}
+function che($c){
+	$y="".kche($c);
+	while(mb_strlen($yZ,"UTF-8")<5){
+		$y="0".$y;
+	}
+	return $y;
+}
+function kche($passphrase,$plain_text){
+	$salt=openssl_random_pseudo_bytes(256);
+	$iv=openssl_random_pseudo_bytes(16);
+	$iterations=999;
+	$key=hash_pbkdf2("sha512",$passphrase,$salt,$iterations,64);
+	$encrypted_data=openssl_encrypt($plain_text,'aes-256-cbc',hex2bin($key),OPENSSL_RAW_DATA,$iv);
+	$data=array("ciphertext"=>base64_encode($encrypted_data),"iv"=>bin2hex($iv),"salt"=>bin2hex($salt));
+	return json_encode($data);
 }
 $op=getallheaders();
 $t=$op["tag"];
@@ -39,7 +56,11 @@ switch(intval($t)){
 		foreach($ans as $key => $v){
 			if($key==$code){
 				echo $v;
-				wr("check:".$v);
+				if(intval($t)!=4){
+					wr("check:".$v);
+				}else{
+					wr("check:".$v."#load");
+				}
 				exit();
 			}
 		}
@@ -70,21 +91,42 @@ switch(intval($t)){
 				}
 			}
 			$gcount=count($result);
-			if($gcount<=12){
+			if($gcount>=12){
 				echo "ok11";
 				wr("11_goal");
-			}elseif($gcount<=4){
+			}elseif($gcount>=4){
 				echo "ok4";
 				wr("4_goal");
+			}else{
+				echo "non";
+				wr("try_ok_goal");
 			}
 		}else{
 			echo "non";
 			wr("try_goal");
 		}
-		//ToDo:記録を参照して何箇所回ったか調べる
+	break;
+	case 5:
+		if(in_array("sha512",hash_algos())){
+			echo "sha512";
+		}else{
+			echo "SHA512ハッシュは使えません";
+		}
+	break;
+	case 6:
+		$r="";
+		foreach($ans as $key => $v){
+			$r.=hash("sha512",$key)."@";
+			$r.=kche($key,$v)."#";
+		}
+		$r.="goal@".hash("sha512","goal".$b_goal);
+		echo $r;
+	break;
+	case 7:
+		//オンラインになった時のログを記録
 	break;
 	default:
-		send();
+		echo "non";
 	break;
 }
 ?>
