@@ -38,27 +38,28 @@ var sha;
 var check=true;
 var gearR=200;
 var clea=[];
-if(!localStorage){
-	alert("お使いの端末では、ゲームが正常に動作しません。");
-}
-if(location.hash=="#reset"){
-	hash_reset("fukofes2017_str");
-	hash_reset("fukofes2017_str_id");
-	hash_reset("fukofes2017_str_clea");
-	hash_reset("fukofes2017_str_off");
-	hash_reset("fukofes2017_str_log");
-}
 
 window.addEventListener("load",load);
 window.addEventListener("resize",changeSize);
 window.addEventListener("popstate",function(){
-	retop()
+	alert("##");
+	//retop()
 });
 
 
 function load(){
 	if(_ua.Mobile||_ua.Tablet){
 		//something
+	}
+	if(!localStorage){
+		swal({title:"ERROR",text:"お使いの端末では、ゲームが正常に動作しない可能性があります。対応端末をご利用ください。",typr:"error"},function(){pf=false;});
+	}
+	if(location.hash=="#reset"){
+		hash_reset("fukofes2017_str");
+		hash_reset("fukofes2017_str_id");
+		hash_reset("fukofes2017_str_clea");
+		hash_reset("fukofes2017_str_off");
+		hash_reset("fukofes2017_str_log");
 	}
 	init();
 }
@@ -69,9 +70,9 @@ function init(){
 		offline("on");
 	}else if(location.hash=="#line"){
 		if(localStorage.getItem("fukofes2017_str_off")){
-			alert("現在はオフラインモードで動作中です");
+			swal("","現在はオフラインモードで動作中です","info");
 		}else{
-			alert("現在はオンラインモードで動作中です");
+			swal("","現在はオンラインモードで動作中です","info");
 		}
 	}
 	context=document.getElementById('con1');
@@ -87,8 +88,8 @@ function init(){
 		for(p=0;p<clea.length;p++){
 			if(clea[p].search("goal")==0){
 				document.getElementById("no5").innerText="ゴール済です";
-				document.getElementById("no5").onclick=function(){alert("ゴール済です。\n引き続き附高祭2017をお楽しみください");};
-				alert("ゴール済です。\n引き続き附高祭2017をお楽しみください");
+				document.getElementById("no5").onclick=function(){swal("ゴール済です","引き続き附高祭2017をお楽しみください","success");};
+				document.getElementById("no5").click();
 			}else{
 				tophp(clea[p],4);
 			}
@@ -158,7 +159,7 @@ function OfflinePHP(){
 function offline(hiki){
 	if(!localStorage.getItem("fukofes2017_str_off")){
 		if(hiki=="512"){
-			alert("オフラインモードは公式にサポートされていない非推奨機能です。\nゲームの動作が遅れる場合があります。");
+			swal("","オフラインモードは公式にサポートされていない非推奨機能です。ゲームの動作が遅れる場合があります。","warning");
 			alert("オンラインモード（現在のモード）の使用を強くおすすめします。");
 			if(!confirm("オフラインモードへ切り替えますか？")){
 				return;
