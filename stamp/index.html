@@ -1,55 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html manifest="top.appcache">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<title>
 			スタンプラリートップ
 		</title>
 		<link rel="stylesheet" href="./src/index.css">
-		<script type="text/javascript" src="./src/index.js"></script>
-		<script type="text/javascript" src="./src/qr/grid.js"></script>
-		<script type="text/javascript" src="./src/qr/version.js"></script>
-		<script type="text/javascript" src="./src/qr/detector.js"></script>
-		<script type="text/javascript" src="./src/qr/formatinf.js"></script>
-		<script type="text/javascript" src="./src/qr/errorlevel.js"></script>
-		<script type="text/javascript" src="./src/qr/bitmat.js"></script>
-		<script type="text/javascript" src="./src/qr/datablock.js"></script>
-		<script type="text/javascript" src="./src/qr/bmparser.js"></script>
-		<script type="text/javascript" src="./src/qr/datamask.js"></script>
-		<script type="text/javascript" src="./src/qr/rsdecoder.js"></script>
-		<script type="text/javascript" src="./src/qr/gf256poly.js"></script>
-		<script type="text/javascript" src="./src/qr/gf256.js"></script>
-		<script type="text/javascript" src="./src/qr/decoder.js"></script>
-		<script type="text/javascript" src="./src/qr/qrcode.js"></script>
-		<script type="text/javascript" src="./src/qr/findpat.js"></script>
-		<script type="text/javascript" src="./src/qr/alignpat.js"></script>
-		<script type="text/javascript" src="./src/qr/databr.js"></script>
-		<script type="text/javascript" src="./src/offline/core.js"></script>
-		<script type="text/javascript" src="./src/offline/x64-core.js"></script>
-		<script type="text/javascript" src="./src/offline/enc-utf16.js"></script>
-		<script type="text/javascript" src="./src/offline/enc-base64.js"></script>
-		<script type="text/javascript" src="./src/offline/md5.js"></script>
-		<script type="text/javascript" src="./src/offline/sha1.js"></script>
-		<script type="text/javascript" src="./src/offline/sha256.js"></script>
-		<script type="text/javascript" src="./src/offline/sha512.js"></script>
-		<script type="text/javascript" src="./src/offline/sha3.js"></script>
-		<script type="text/javascript" src="./src/offline/hmac.js"></script>
-		<script type="text/javascript" src="./src/offline/pbkdf2.js"></script>
-		<script type="text/javascript" src="./src/offline/evpkdf.js"></script>
-		<script type="text/javascript" src="./src/offline/cipher-core.js"></script>
-		<script type="text/javascript" src="./src/offline/mode-cfb.js"></script>
-		<script type="text/javascript" src="./src/offline/mode-ctr.js"></script>
-		<script type="text/javascript" src="./src/offline/mode-ofb.js"></script>
-		<script type="text/javascript" src="./src/offline/mode-ecb.js"></script>
-		<script type="text/javascript" src="./src/offline/pad-ansix923.js"></script>
-		<script type="text/javascript" src="./src/offline/pad-iso10126.js"></script>
-		<script type="text/javascript" src="./src/offline/pad-zeropadding.js"></script>
-		<script type="text/javascript" src="./src/offline/pad-iso97971.js"></script>
-		<script type="text/javascript" src="./src/offline/pad-nopadding.js"></script>
-		<script type="text/javascript" src="./src/offline/rc4.js"></script>
-		<script type="text/javascript" src="./src/offline/rabbit.js"></script>
-		<script type="text/javascript" src="./src/offline/aes.js"></script>
-		<script type="text/javascript" src="./src/offline/tripledes.js"></script>
+		<link rel="stylesheet" href="./src/sweetalert2.min.css">
+		
+		<script type="text/javascript" src="./src/index.js" defer></script>
+		<script type="text/javascript" src="./src/qr.js" async></script>
+		<script type="text/javascript" src="./src/offline.js" async></script>
+		<script type="text/javascript" src="./src/sweetalert2.min.js"></script>
 		
 	</head>
 	<body ontouchstart="">
@@ -62,7 +25,7 @@
 			</div>
 			<div id="cell">
 				<div id="text">
-					<span id="title">デジタルスタンプラリー</span> in 附高祭2017<br>
+					<div><span id="title">デジタルスタンプラリー</span> in 附高祭2017</div>
 					<div id="ma"></div><div id="ma"></div>
 					ようこそ、附高祭2017へ。<br>
 					このサイトでは附高祭2017内で開催されるデジタルスタンプラリー<br>
@@ -235,7 +198,7 @@
 					※本ゲームは個人を特定できない範囲で情報を収集し、今後の附高祭の品質向上のために使用されます。<br>
 					</p>
 					</div>
-					<button class="button1" id="no3" onclick="retop()">ルール説明を閉じる</button>
+					<button class="button1_2" id="no3" onclick="retop()"><p>×</p></button>
 				</div>
 			</div>
 			<div id="foot">
